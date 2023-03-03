@@ -5,12 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WeatherApp</title>
+    <link rel="stylesheet" href="/src/style.css">
   </head>
-  <body class="bg-[#23272A] flex items-center justify-center">
-    <div class="w-[20vw] h-[38vh] bg-[#2C2F33] mt-[200px] grid grid-cols-6 grid-rows-6 rounded-xl">
-      <div src="" alt=""  class="row-start-1 row-end-6 col-start-1 col-end-7"></div>
+  <body class="bg-[#23272A] flex items-center justify-center font-sans">
+    <div class="w-[20vw] h-[38vh] bg-[#2C2F33] mt-[200px] grid grid-cols-6 grid-rows-6 rounded-xl shadow-2xl">
+
+
+      <div id="datadiv" src="" alt=""  class="text-white row-start-1 row-end-6 col-start-1 col-end-7 flex flex-col justify-around items-center">
+        <div id="name" class="text-4xl font-bold tracking-tighter mt-4"></div>
+        <img src="#" id="image" class="mb-">
+        <div id="temp" class=" text-7xl"></div>
+        <div id="description" class=""></div>
+      </div>
+
+
       <img src="https://icon-library.com/images/magnifying-glass-icon-white/magnifying-glass-icon-white-4.jpg" id="searchbutton" class="row-start-6 w-[35%] mt-5 ml-5 cursor-pointer">
-      <input type="text" value='Rio de janeiro' name="" id="location" class="outline-none row-start-6 col-span-5 my-3 mr-4 rounded-full w-auto pl-4 bg-[#424549] text-white">
+      <input type="text" value="Rio de janeiro" name="" id="location" class="transition-all ease-in-out outline-none row-start-6 col-span-5 my-3 mr-4 rounded-full w-auto pl-4 bg-[#424549] text-white">
     </div>
     <script src="bundle.js"></script>
   </body>
