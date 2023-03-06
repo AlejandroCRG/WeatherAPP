@@ -5,64 +5,8 @@ let locationdiv = document.getElementById('name');
 let descriptiondiv = document.getElementById('description');
 let image = document.getElementById('image');
 let wind = document.getElementById('wind');
-let humidity = document.getElementById('humidity')
-
-function getimg(x){
-    if (x === '01d'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/869/869767.png';
-    }
-    if (x === '01n'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/581/581550.png';
-    }
-    if (x === '02d'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/3222/3222807.png';
-    }
-    if (x === '02n'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/4676/4676959.png';
-    }
-    if (x === '03d'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/414/414825.png';
-    }
-    if (x === '03n'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/2136/2136594.png';
-    }
-    if (x === '04d'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/9672/9672161.png';
-    }
-    if (x === '04n'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/9672/9672161.png';
-    }
-    if (x === '09d'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/1208/1208526.png';
-    }
-    if (x === '09n'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/1208/1208526.png';
-    }
-    if (x === '10d'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/3104/3104619.png';
-    }
-    if (x === '10n'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/9755/9755258.png';
-    }
-    if (x === '11d'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/1146/1146860.png';
-    }
-    if (x === '11n'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/1959/1959360.png';
-    }
-    if (x === '13d'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/2315/2315377.png';
-    }
-    if (x === '13n'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/2315/2315377.png';
-    }
-    if (x === '50d'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/4151/4151022.png';
-    }
-    if (x === '50n'){
-        image.src = 'https://cdn-icons-png.flaticon.com/512/1207/1207561.png';
-    }
-}
+let humidity = document.getElementById('humidity');
+let visibility = document.getElementById('visibility');
 
 async function getWeather(){
     const location = document.getElementById('location').value;
@@ -70,7 +14,7 @@ async function getWeather(){
     const searchlocation = await Locationresponse.json();
     let lat = searchlocation[0].lat;
     let lon = searchlocation[0].lon;
-    let locationname = searchlocation[0].name.toUpperCase();
+    let locationname = searchlocation[0].name;
 
     const Weatherresponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=0f22ba557dc196175d48a0811ec6d7ac`, {mode: 'cors'});
     const searchData = await Weatherresponse.json();
@@ -81,21 +25,80 @@ async function getWeather(){
     let imgID = searchData.weather[0].icon;
     let windspeed = searchData.wind.speed;
     let humidityvalue = searchData.main.humidity;
+    let visibilityvalue = searchData.visibility/1000;
 
     let weatherdes = searchData.weather[0].description;
     weatherdes = weatherdes.slice(0,1).toUpperCase() + weatherdes.slice(1);
-    console.log(weatherdes);
 
     getimg(imgID)
-    weatherdiv.innerText = averagetemp += '°C';
+    weatherdiv.innerText = averagetemp += '°';
     locationdiv.innerText = locationname;
     descriptiondiv.innerText = weatherdes;
     wind.innerHTML = `${windspeed}m/s`;
     humidity.innerHTML = `${humidityvalue}%`;
+    visibility.innerHTML = `${visibilityvalue}km`;
+}
+
+function getimg(x){
+    if (x === '01d'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/6974/6974833.png';
+    }
+    if (x === '01n'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/4333/4333652.png';
+    }
+    if (x === '02d'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/1146/1146869.png';
+    }
+    if (x === '02n'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/3626/3626276.png';
+    }
+    if (x === '03d'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/414/414927.png';
+    }
+    if (x === '03n'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/414/414927.png';
+    }
+    if (x === '04d'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/414/414927.png';
+    }
+    if (x === '04n'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/414/414927.png';
+    }
+    if (x === '09d'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/1208/1208526.png';
+    }
+    if (x === '09n'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/1208/1208526.png';
+    }
+    if (x === '10d'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/1959/1959317.png';
+    }
+    if (x === '10n'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/5903/5903792.png';
+    }
+    if (x === '11d'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/1146/1146860.png';
+    }
+    if (x === '11n'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/1959/1959348.png';
+    }
+    if (x === '13d'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/2315/2315309.png';
+    }
+    if (x === '13n'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/2315/2315309.png';
+    }
+    if (x === '50d'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/4005/4005817.png';
+    }
+    if (x === '50n'){
+        image.src = 'https://cdn-icons-png.flaticon.com/512/2930/2930127.png';
+    }
 }
 
 getWeather()
 
 
+let datadiv = document.getElementById('datadiv')
 let searchbutton = document.getElementById('searchbutton')
 searchbutton.addEventListener("click", getWeather)
